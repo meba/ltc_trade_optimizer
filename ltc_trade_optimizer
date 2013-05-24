@@ -177,7 +177,7 @@ echo -e "      (${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblu}${txtrst}) - ${txt
 echo
 echo -e "    BTC-E::LTC/BTC/USD"
 echo -e "      ${txtDarkGrey}LTC --(transaction fee)--> BTC --(transaction fee)--> USD${txtrst}"
-echo -e "      (((${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblb}${txtrst}) - ${txtRed}L${fbtcl}${txtrst}) * ${txtBlue}${ebbu}${txtrst}) - ${txtRed}\$${fbtcu}${txtrst} = ${txtGreen}\$${tblbu}${txtrst}" 
+echo -e "      (((${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblb}${txtrst}) - ${txtRed}B${fbtcb}${txtrst}) * ${txtBlue}${ebbu}${txtrst}) - ${txtRed}\$${fbtcu}${txtrst} = ${txtGreen}\$${tblbu}${txtrst}" 
 echo
 echo -e "    BTC-E::LTC/BTC --> Mt.Gox::BTC/USD" # incomplete
 echo -e "      ${txtDarkGrey}LTC --(transaction fee)--> BTC --(withdrawl fee)--> Mt.Gox BTC --(transaction fee)--> USD${txtrst}"
