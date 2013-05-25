@@ -118,6 +118,9 @@ exchange_mtgox_btc2usd=$(curl -s ${json_mtgox_btc2usd} \
 
 
 # Conversions
+btc_is_ltc=$(echo "1 / ${eblb}" | bc)
+  bil=$btc_is_ltc
+
 convert_btce_ltc2btc=$(echo "${ltc} * ${eblb}" | bc)
   cblb=$convert_btce_ltc2btc
 
@@ -149,6 +152,9 @@ trade_btce_ltc2usd=$(echo "${cblu} - ${fbtcu}" | bc)
 trade_btce_ltc2btc2usd=$(echo "${tblu} - ${fbtcu}" | bc)
   tblbu=$trade_btce_ltc2btc2usd
 
+trade_btce_ltc2btc=$(echo "${cblb} - ${fbtcb}" | bc)
+  tblb=$trade_btce_ltc2btc
+
 trade_btce_ltc2btc_mtgox_btc2usd=$(echo "((${cblb} - ${fbtcb} - ${fbwb}) * ${embu}) - ${fmtcu}" | bc)
   tblbmbu=$trade_btce_ltc2btc_mtgox_btc2usd
 
@@ -160,7 +166,7 @@ echo -e "    Mt.Gox transaction fee at ${txtYellow}${fmtp}${txtrst}%	BTC ${txtRe
 echo
 echo -e "    BTC-E withdrawl fee is flat-rate	BTC ${txtRed}${fbwb}${txtrst}, LTC ${txtRed}${fbwl}${txtrst}"
 echo
-echo -e "  Rates on ${txtPurple}$(date)${txtrst}"
+echo -e "  Rates on ${txtPurple}$(date)${txtrst} (${txtCyan}1${txtrst} BTC = ${txtCyan}${bil}${txtrst} LTC)"
 echo -e "    BTC-E: 	BTC/USD @ ${txtBlue}${ebbu}${txtrst}, LTC/USD @ ${txtBlue}${eblu}${txtrst}, LTC/BTC @ ${txtBlue}${eblb}${txtrst}" 
 echo -e "    Mt.Gox:	BTC/USD @ ${txtBlue}${embu}${txtrst}"
 echo
@@ -171,6 +177,10 @@ echo -e "    BTC-E (BTC/USD)	USD ${txtGreen}${cbbu}${txtrst}"
 echo -e "    Mt.Gox (BTC/USD)	USD ${txtGreen}${cmbu}${txtrst}"
 echo
 echo -e "  Trade Permutations (showing fees)"
+echo -e "    BTC-E::LTC/BTC"
+echo -e "      ${txtDarkGrey}LTC --(transaction fee)--> BTC${txtrst}"
+echo -e "      (${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblb}${txtrst}) - ${txtRed}B${fbtcb}${txtrst} = ${txtGreen}B${tblb}${txtrst}" 
+echo
 echo -e "    BTC-E::LTC/USD"
 echo -e "      ${txtDarkGrey}LTC --(transaction fee)--> USD${txtrst}"
 echo -e "      (${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblu}${txtrst}) - ${txtRed}\$${fbtcu}${txtrst} = ${txtGreen}\$${tblu}${txtrst}" 
@@ -179,7 +189,7 @@ echo -e "    BTC-E::LTC/BTC/USD"
 echo -e "      ${txtDarkGrey}LTC --(transaction fee)--> BTC --(transaction fee)--> USD${txtrst}"
 echo -e "      (((${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblb}${txtrst}) - ${txtRed}B${fbtcb}${txtrst}) * ${txtBlue}${ebbu}${txtrst}) - ${txtRed}\$${fbtcu}${txtrst} = ${txtGreen}\$${tblbu}${txtrst}" 
 echo
-echo -e "    BTC-E::LTC/BTC --> Mt.Gox::BTC/USD" # incomplete
+echo -e "    BTC-E::LTC/BTC --> Mt.Gox::BTC/USD"
 echo -e "      ${txtDarkGrey}LTC --(transaction fee)--> BTC --(withdrawl fee)--> Mt.Gox BTC --(transaction fee)--> USD${txtrst}"
 echo -e "      (((${txtCyan}L${ltc}${txtrst} * ${txtBlue}${eblb}${txtrst}) - ${txtRed}B${fbtcb}${txtrst} - ${txtRed}B${fbwb}${txtrst}) * ${txtBlue}${embu}${txtrst}) - ${txtRed}\$${fmtcu}${txtrst} = ${txtGreen}\$${tblbmbu}${txtrst}"
 echo
