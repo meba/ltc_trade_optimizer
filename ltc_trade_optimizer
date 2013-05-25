@@ -59,11 +59,6 @@ txtCyanBG="$(tput setab 6)"
 txtBrightCyan="$(tput bold ; tput setaf 6)"
 
 
-# hi..
-echo
-echo -e "LTC Trade Optimizer"
-
-
 # Fees
 fee_btce_transaction=.002
   fbt=$fee_btce_transaction
