@@ -155,6 +155,7 @@ trade_btce_ltc2btc_mtgox_btc2usd=$(echo "((${cblb} - ${fbtcb} - ${fbwb}) * ${emb
 
 
 # Price sheet..
+echo
 echo -e "  Fees"
 echo -e "    BTC-E transaction fee at ${txtYellow}${fbtp}${txtrst}%	BTC ${txtRed}${fbtcb}${txtrst}, USD ${txtRed}${fbtcu}${txtrst}, LTC ${txtRed}${fbtcl}${txtrst}"
 echo -e "    Mt.Gox transaction fee at ${txtYellow}${fmtp}${txtrst}%	BTC ${txtRed}${fmtcb}${txtrst}, USD ${txtRed}${fmtcu}${txtrst}"
