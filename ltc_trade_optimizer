@@ -81,21 +81,21 @@ fee_btce_withdraw_ltc=.5
 
 
 # Exchanges..
-exchange_btce_btc2usd=$(curl -s ${json_btce_btc2usd} \
+exchange_btce_btc2usd=$(curl --connect-timeout 10 -s ${json_btce_btc2usd} \
   | python -mjson.tool \
   | grep sell \
   | awk -F: '{print $2}' \
   | sed -e 's/\ //g' -e 's/,//g')
   ebbu=$exchange_btce_btc2usd
 
-exchange_btce_ltc2btc=$(curl -s ${json_btce_ltc2btc} \
+exchange_btce_ltc2btc=$(curl --connect-timeout 10 -s ${json_btce_ltc2btc} \
   | python -mjson.tool \
   | grep sell \
   | awk -F: '{print $2}' \
   | sed -e 's/\ //g' -e 's/,//g')
   eblb=$exchange_btce_ltc2btc
 
-exchange_btce_ltc2usd=$(curl -s ${json_btce_ltc2usd} \
+exchange_btce_ltc2usd=$(curl --connect-timeout 10 -s ${json_btce_ltc2usd} \
   | python -mjson.tool \
   | grep sell \
   | awk -F: '{print $2}' \
@@ -110,7 +110,7 @@ exchange_btce_ltc2usd=$(curl -s ${json_btce_ltc2usd} \
 #  | sed -e 's/\ //g' -e 's/,//g' -e 's/"//g')
 #  embu=$exchange_mtgox_btc2usd
 
-exchange_bitpay_btc2usd=$(curl -s ${json_bitpay_btc2usd} \
+exchange_bitpay_btc2usd=$(curl --connect-timeout 10 -s ${json_bitpay_btc2usd} \
   | python -mjson.tool \
   | grep -A 2 USD \
   | awk '{ if ($1 ~ /rate/) print $2}')
